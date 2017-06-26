@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Rese:war">
+    <output-path>$PROJECT_DIR$/Rese/target</output-path>
+    <root id="archive" name="Rese-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="Rese:war exploded" />
+    </root>
+  </artifact>
+</component>
