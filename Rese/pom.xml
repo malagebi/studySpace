@@ -5,11 +5,12 @@
 
     <modelVersion>4.0.0</modelVersion>
     <packaging>war</packaging>
-
     <name>Rese</name>
     <groupId>org.com.lsl</groupId>
     <artifactId>Rese</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jackson.version>2.1.4</jackson.version>
@@ -308,28 +309,43 @@
                 <profiles.active>dev</profiles.active>
             </properties>
             <activation>
+                <!--默认   开发环境-->
                 <activeByDefault>true</activeByDefault>
             </activation>
         </profile>
-
+        <!--测试环境-->
+        <profile>
+            <id>beta</id>
+            <properties>
+                <profiles.active>beta</profiles.active>
+            </properties>
+        </profile>
+        <!--生产环境-->
+        <profile>
+            <id>release</id>
+            <properties>
+                <profiles.active>release</profiles.active>
+            </properties>
+        </profile>
     </profiles>
 
     <build>
-
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
                 <!-- 资源根目录排除各环境的配置，防止在生成目录中多余其它目录 -->
                 <excludes>
-                    <!-- <exclude>beta/*</exclude>
-                     <exclude>pro/*</exclude>-->
+                    <exclude>beta/*</exclude>
+                    <exclude>release/*</exclude>
                     <exclude>dev/*</exclude>
                 </excludes>
             </resource>
             <resource>
                 <directory>src/main/resources/${profiles.active}</directory>
                 <filtering>true</filtering>
+
             </resource>
+
         </resources>
 
 
@@ -349,11 +365,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.4</version>
-                <configuration>
-                    <archive>
-                        <addMavenDescriptor>false</addMavenDescriptor>
-                    </archive>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
