@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.com.lsl.dao.sysUserRoleMapper">
+    <resultMap id="BaseResultMap" type="org.com.lsl.entity.sysUserRole">
+        <constructor>
+            <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT"/>
+            <arg column="sys_user_id" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="sys_role_id" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, sys_user_id, sys_role_id
+    </sql>
+    <insert id="insertSelective" parameterType="org.com.lsl.entity.sysUserRole">
+        insert into sys_user_role
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="sysUserId != null">
+                sys_user_id,
+            </if>
+            <if test="sysRoleId != null">
+                sys_role_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="sysUserId != null">
+                #{sysUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="sysRoleId != null">
+                #{sysRoleId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="org.com.lsl.entity.sysUserRole">
+        update sys_user_role
+        <set>
+            <if test="sysUserId != null">
+                sys_user_id = #{sysUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="sysRoleId != null">
+                sys_role_id = #{sysRoleId,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+</mapper>

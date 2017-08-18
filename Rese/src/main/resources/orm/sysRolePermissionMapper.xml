@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.com.lsl.dao.sysRolePermissionMapper">
+    <resultMap id="BaseResultMap" type="org.com.lsl.entity.sysRolePermission">
+        <constructor>
+            <idArg column="id" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="sys_role_id" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="sys_permission_id" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, sys_role_id, sys_permission_id
+    </sql>
+    <insert id="insertSelective" parameterType="org.com.lsl.entity.sysRolePermission">
+        insert into sys_role_permission
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="sysRoleId != null">
+                sys_role_id,
+            </if>
+            <if test="sysPermissionId != null">
+                sys_permission_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="sysRoleId != null">
+                #{sysRoleId,jdbcType=VARCHAR},
+            </if>
+            <if test="sysPermissionId != null">
+                #{sysPermissionId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="org.com.lsl.entity.sysRolePermission">
+        update sys_role_permission
+        <set>
+            <if test="sysRoleId != null">
+                sys_role_id = #{sysRoleId,jdbcType=VARCHAR},
+            </if>
+            <if test="sysPermissionId != null">
+                sys_permission_id = #{sysPermissionId,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+</mapper>
