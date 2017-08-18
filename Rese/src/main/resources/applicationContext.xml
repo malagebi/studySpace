@@ -97,4 +97,6 @@
         <property name="defaultEncoding" value="UTF-8"/>
         <property name="cacheSeconds" value="60"/>
     </bean>
+
+    <import resource="spring-shiro.xml"/>
 </beans>

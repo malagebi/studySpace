@@ -13,21 +13,22 @@
 
         <!-- optional，旨在创建class时，对注释进行控制 -->
         <commentGenerator>
-            <property name="suppressDate" value="true" />
+            <property name="suppressDate" value="false"/>
+            <property name="suppressAllComments" value="true"/>
         </commentGenerator>
 
 
         <!--jdbc的数据库连接 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3306/rese"
-                        userId="root" password="lishunli">
+                        connectionURL="jdbc:mysql://172.23.23.175:3306/example"
+                        userId="root" password="666666">
         </jdbcConnection>
 
 
 
         <!-- 非必需，类型处理器，在数据库类型和java类型之间的转换控制-->
         <javaTypeResolver >
-            <property name="forceBigDecimals" value="false" />
+            <property name="forceBigDecimals" value="true"/>
         </javaTypeResolver>
 
         <!-- Model模型生成器,用来生成含有主键key的类，记录类 以及查询Example类
@@ -42,17 +43,14 @@
             <property name="enableSubPackages" value="false"/>
 
             <!-- 建立的Model对象是否 不可改变  即生成的Model对象不会有 setter方法，只有构造方法 -->
-            <property name="immutable" value="true"/>
-
-            <!-- 给Model添加一个父类 -->
-           <!-- <property name="rootClass" value="com.foo.louis.Hello"/>-->
+            <property name="immutable" value="false"/>
 
             <!-- 是否对类CHAR类型的列的数据进行trim操作 -->
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
         <!--Mapper映射文件生成所在的目录 为每一个数据库的表生成对应的SqlMap文件 -->
-        <sqlMapGenerator targetPackage="org.com.lsl.dao" targetProject="src/main/java">
+        <sqlMapGenerator targetPackage="orm/" targetProject="src/main/resources">
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
 
@@ -87,14 +85,30 @@
         </javaClientGenerator>
 
 
-
-        <table tableName="user_info" domainObjectName="UserInfo"
-                        enableCountByExample="false" enableUpdateByExample="false"
-                        enableDeleteByExample="false" enableSelectByExample="false"
+        <table tableName="sys_user" domainObjectName="sysUser"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
-
-
-
+        </table>
+        <table tableName="sys_user_role" domainObjectName="sysUserRole"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table tableName="sys_role" domainObjectName="sysRole"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table tableName="sys_permission" domainObjectName="sysPermission"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table tableName="sys_role_permission" domainObjectName="sysRolePermission"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
         </table>
     </context>
 </generatorConfiguration>
