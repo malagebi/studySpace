@@ -1,6 +1,6 @@
 package org.com.lsl.service.impl.user;
 
-import org.com.lsl.dao.UserInfoMapper;
+import org.com.lsl.dao.sysUserMapper;
 import org.com.lsl.entity.UserInfo;
 import org.com.lsl.entity.sysUser;
 import org.com.lsl.service.UserInfoService;
@@ -11,20 +11,20 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
-@Service
+@Service(value = "userInfoService")
 public class UserInfoServiceImpl implements UserInfoService {
 
     private Logger log = LoggerFactory.getLogger(this.getClass());
 
 
-    @Resource
-    private UserInfoMapper dao;
+    // @Autowired
+    // private sysUserMapper dao;
 
     @Override
-    public UserInfo findById(long id) {
+    public sysUser findById(long id) {
         log.info("long   id---------------");
-        return dao.selectByPrimaryKey(id);
-
+        // return dao.selectByPrimaryKey(id);
+        return null;
     }
 
     @Override

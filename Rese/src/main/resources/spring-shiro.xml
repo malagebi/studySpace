@@ -25,9 +25,9 @@
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <property name="realm" ref="myRealm"/>
         <!-- 使用配置的缓存管理器 -->
-        <property name="cacheManager" ref="cacheManager"></property>
-        <!-- 会话管理 -->
-        <property name="sessionManager" ref="sessionManager"/>
+        <!--   <property name="cacheManager" ref="cacheManager"></property>
+           &lt;!&ndash; 会话管理 &ndash;&gt;
+           <property name="sessionManager" ref="sessionManager"/>-->
     </bean>
 
     <bean id="myRealm" class="org.com.lsl.security.SecurityRealm"/>

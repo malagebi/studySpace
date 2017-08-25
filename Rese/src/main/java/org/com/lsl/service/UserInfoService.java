@@ -6,7 +6,7 @@ import org.com.lsl.entity.sysUser;
 
 public interface UserInfoService {
 
-    UserInfo findById(long id);
+    sysUser findById(long id);
 
     sysUser findByLoginName(String loginName);
 }
