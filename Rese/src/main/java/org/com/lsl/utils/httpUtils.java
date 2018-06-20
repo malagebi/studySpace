@@ -50,6 +50,7 @@ public class httpUtils {
     }
 
     public static void main(String[] args) {
+        //贝蒂测试冲突
         httpPost("http://www.baidu.com");
     }
 }
